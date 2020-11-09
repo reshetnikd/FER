@@ -13,6 +13,7 @@
 		356992432559A3FD00C10185 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356992412559A3FD00C10185 /* Main.storyboard */; };
 		356992452559A3FE00C10185 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356992442559A3FE00C10185 /* Assets.xcassets */; };
 		356992482559A3FE00C10185 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356992462559A3FE00C10185 /* LaunchScreen.storyboard */; };
+		356992562559C78500C10185 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356992552559C78500C10185 /* CustomSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		356992442559A3FE00C10185 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		356992472559A3FE00C10185 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		356992492559A3FE00C10185 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		356992552559C78500C10185 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				3569923D2559A3FD00C10185 /* SceneDelegate.swift */,
 				3569923F2559A3FD00C10185 /* ViewController.swift */,
 				356992412559A3FD00C10185 /* Main.storyboard */,
+				356992552559C78500C10185 /* CustomSegmentedControl.swift */,
 				356992442559A3FE00C10185 /* Assets.xcassets */,
 				356992462559A3FE00C10185 /* LaunchScreen.storyboard */,
 				356992492559A3FE00C10185 /* Info.plist */,
@@ -139,6 +142,7 @@
 			files = (
 				356992402559A3FD00C10185 /* ViewController.swift in Sources */,
 				3569923C2559A3FD00C10185 /* AppDelegate.swift in Sources */,
+				356992562559C78500C10185 /* CustomSegmentedControl.swift in Sources */,
 				3569923E2559A3FD00C10185 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +292,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FER/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,7 +300,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = reshetnikd.FER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -306,6 +311,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FER/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,7 +319,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = reshetnikd.FER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
