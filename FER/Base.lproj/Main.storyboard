@@ -17,6 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPh-nJ-Khl">
+                                <rect key="frame" x="139" y="273.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemTealColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Jnn-AE-z7Q">
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDT-jw-wb9" customClass="CustomSegmentedControl" customModule="FER" customModuleProvider="target">
                                 <rect key="frame" x="20" y="23" width="170" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -34,7 +44,7 @@
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedLabelColor">
-                                        <color key="value" red="0.20000000000000001" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" systemColor="systemTealColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -87,28 +97,34 @@
                                     <constraint firstAttribute="height" constant="90" id="zxa-iA-0Fv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
-                                <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" systemColor="systemTealColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstItem="RM4-qC-LXk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Ef-bI-yeU"/>
                             <constraint firstItem="tME-Dp-iJO" firstAttribute="leading" secondItem="dDT-jw-wb9" secondAttribute="trailing" constant="20" id="5xY-VR-xJy"/>
+                            <constraint firstItem="RPh-nJ-Khl" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="KMa-WN-Ceo"/>
+                            <constraint firstItem="Jnn-AE-z7Q" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="L6Z-nV-yqZ"/>
                             <constraint firstItem="RM4-qC-LXk" firstAttribute="top" secondItem="tME-Dp-iJO" secondAttribute="bottom" constant="20" id="LdP-8P-YHs"/>
                             <constraint firstItem="RM4-qC-LXk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Mco-zz-FPa"/>
                             <constraint firstItem="dDT-jw-wb9" firstAttribute="centerY" secondItem="tME-Dp-iJO" secondAttribute="centerY" id="cV0-aU-dNF"/>
                             <constraint firstItem="RM4-qC-LXk" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gei-b4-SK0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tME-Dp-iJO" secondAttribute="trailing" constant="20" id="gtR-p2-lRq"/>
+                            <constraint firstItem="RPh-nJ-Khl" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="hqx-WI-6Q2"/>
                             <constraint firstItem="tME-Dp-iJO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lH4-IC-MUh"/>
+                            <constraint firstItem="Jnn-AE-z7Q" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="qUn-P7-gxP"/>
                             <constraint firstItem="dDT-jw-wb9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yl4-p1-PuX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TJS-gq-A9p"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="Jnn-AE-z7Q" id="rLu-3j-zLy"/>
                         <outlet property="currencyLabel" destination="tME-Dp-iJO" id="daJ-se-haW"/>
                         <outlet property="daysSwitcher" destination="dDT-jw-wb9" id="l2j-Ih-Tif"/>
+                        <outlet property="messageLabel" destination="RPh-nJ-Khl" id="jwT-Aq-DlZ"/>
                         <outlet property="tableView" destination="RM4-qC-LXk" id="WsH-py-McF"/>
                     </connections>
                 </viewController>
@@ -120,6 +136,12 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
