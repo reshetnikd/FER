@@ -65,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				35699268255ADABE00C10185 /* Supporting Files */,
-				3569923F2559A3FD00C10185 /* ViewController.swift */,
+				3569926B255AF9D000C10185 /* Controller */,
 				35699266255ADAAD00C10185 /* Model */,
 				35699264255ADA9600C10185 /* Views */,
 				356992442559A3FE00C10185 /* Assets.xcassets */,
@@ -101,6 +101,14 @@
 				3569923D2559A3FD00C10185 /* SceneDelegate.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3569926B255AF9D000C10185 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3569923F2559A3FD00C10185 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
