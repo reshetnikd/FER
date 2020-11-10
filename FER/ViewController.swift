@@ -9,22 +9,36 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var baseButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var daysSwitcher: CustomSegmentedControl!
     private let refreshControl: UIRefreshControl = UIRefreshControl()
     private let dataManager: DataManager = DataManager(baseURL: ExchangeRatesAPI.BaseURL)
     var rates: [String: Double] = [:]
-    var yesterday: Date = Date(timeInterval: -86400 * 2, since: Date())
+    var yesterday: Date = Date(timeInterval: -86400 * 4, since: Date()) // If API return same result for yesterday date, use bigger time interval
     var now: Date = Date()
     var chosenDate: Date = Date()
-    var baseCurrency: String = "EUR"
+    var baseCurrencys: [String] = ["EUR", "USD", "GBP"]
+    var currencyIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupView()
+        fetchCurrencyData()
+    }
+    
+    @IBAction func changeBaseCurrency(_ sender: UIButton) {
+        if currencyIndex == 0 {
+            currencyIndex = 1
+        } else if currencyIndex == 1 {
+            currencyIndex = 2
+        } else if currencyIndex == 2 {
+            currencyIndex = 0
+        }
+        
+        baseButton.setTitle(baseCurrencys[currencyIndex], for: UIControl.State.normal)
         fetchCurrencyData()
     }
     
@@ -45,7 +59,7 @@ class ViewController: UIViewController {
     }
     
     private func fetchCurrencyData() {
-        dataManager.getCurrencyRatesFor(base: baseCurrency, date: chosenDate, completion: { (currencyRate, error) in
+        dataManager.getCurrencyRatesFor(base: baseCurrencys[currencyIndex], date: chosenDate, completion: { (currencyRate, error) in
             DispatchQueue.main.async {
                 if let currencyRate = currencyRate {
                     self.rates = currencyRate.rates
@@ -64,8 +78,8 @@ class ViewController: UIViewController {
         setupActivityIndicatorView()
         setupDaysSwitcher()
         setupRefreshControl()
-        currencyLabel.layer.cornerRadius = currencyLabel.frame.width / 2.0
-        currencyLabel.clipsToBounds = true
+        baseButton.layer.cornerRadius = baseButton.frame.width / 2.0
+        baseButton.clipsToBounds = true
     }
     
     private func setupTableView() {
@@ -134,8 +148,11 @@ extension ViewController: UITableViewDataSource {
         let value = rates[sortedKeys[indexPath.row]]!
 
         // Configure cell
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.systemTeal
+        cell.selectedBackgroundView = backgroundView
         cell.tickerLabel.text = ticker
-        cell.valueLabel.text = String(value)
+        cell.valueLabel.text = String(format: "%.2f", value)
 
         return cell
     }

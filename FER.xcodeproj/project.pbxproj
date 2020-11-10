@@ -64,19 +64,43 @@
 		3569923A2559A3FD00C10185 /* FER */ = {
 			isa = PBXGroup;
 			children = (
-				3569923B2559A3FD00C10185 /* AppDelegate.swift */,
-				3569923D2559A3FD00C10185 /* SceneDelegate.swift */,
+				35699268255ADABE00C10185 /* Supporting Files */,
 				3569923F2559A3FD00C10185 /* ViewController.swift */,
-				35699261255A7CE200C10185 /* DataManager.swift */,
-				3569925D2559E26100C10185 /* CurrencyTableViewCell.swift */,
-				3569925A2559DF8400C10185 /* CurrencyRate.swift */,
-				356992552559C78500C10185 /* CustomSegmentedControl.swift */,
+				35699266255ADAAD00C10185 /* Model */,
+				35699264255ADA9600C10185 /* Views */,
 				356992442559A3FE00C10185 /* Assets.xcassets */,
 				356992412559A3FD00C10185 /* Main.storyboard */,
 				356992462559A3FE00C10185 /* LaunchScreen.storyboard */,
 				356992492559A3FE00C10185 /* Info.plist */,
 			);
 			path = FER;
+			sourceTree = "<group>";
+		};
+		35699264255ADA9600C10185 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3569925D2559E26100C10185 /* CurrencyTableViewCell.swift */,
+				356992552559C78500C10185 /* CustomSegmentedControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		35699266255ADAAD00C10185 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				35699261255A7CE200C10185 /* DataManager.swift */,
+				3569925A2559DF8400C10185 /* CurrencyRate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35699268255ADABE00C10185 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3569923B2559A3FD00C10185 /* AppDelegate.swift */,
+				3569923D2559A3FD00C10185 /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -51,6 +51,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RM4-qC-LXk">
                                 <rect key="frame" x="0.0" y="110" width="320" height="458"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" systemColor="systemTealColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyTableViewCell" id="n3I-RK-Cqv" customClass="CurrencyTableViewCell" customModule="FER" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
@@ -59,9 +60,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hy6-cm-svu">
-                                                    <rect key="frame" x="20" y="10.5" width="42" height="23"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hy6-cm-svu">
+                                                    <rect key="frame" x="20" y="11" width="60" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="26"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -89,32 +90,36 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tME-Dp-iJO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5go-F9-8Jq">
                                 <rect key="frame" x="210" y="0.0" width="90" height="90"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="FzM-Ig-Kf0"/>
-                                    <constraint firstAttribute="height" constant="90" id="zxa-iA-0Fv"/>
+                                    <constraint firstAttribute="width" constant="90" id="Ew5-OS-LHJ"/>
+                                    <constraint firstAttribute="height" constant="90" id="aX9-9U-bVA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
-                                <color key="textColor" systemColor="systemTealColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="EUR">
+                                    <color key="titleColor" systemColor="systemTealColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeBaseCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="exT-v1-n9d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstItem="RM4-qC-LXk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Ef-bI-yeU"/>
-                            <constraint firstItem="tME-Dp-iJO" firstAttribute="leading" secondItem="dDT-jw-wb9" secondAttribute="trailing" constant="20" id="5xY-VR-xJy"/>
+                            <constraint firstItem="5go-F9-8Jq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9eU-EX-ECf"/>
+                            <constraint firstItem="dDT-jw-wb9" firstAttribute="centerY" secondItem="5go-F9-8Jq" secondAttribute="centerY" id="CKD-5V-2iL"/>
                             <constraint firstItem="RPh-nJ-Khl" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="KMa-WN-Ceo"/>
                             <constraint firstItem="Jnn-AE-z7Q" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="L6Z-nV-yqZ"/>
-                            <constraint firstItem="RM4-qC-LXk" firstAttribute="top" secondItem="tME-Dp-iJO" secondAttribute="bottom" constant="20" id="LdP-8P-YHs"/>
                             <constraint firstItem="RM4-qC-LXk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Mco-zz-FPa"/>
-                            <constraint firstItem="dDT-jw-wb9" firstAttribute="centerY" secondItem="tME-Dp-iJO" secondAttribute="centerY" id="cV0-aU-dNF"/>
+                            <constraint firstItem="RM4-qC-LXk" firstAttribute="top" secondItem="5go-F9-8Jq" secondAttribute="bottom" constant="20" id="b4W-EN-kL8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5go-F9-8Jq" secondAttribute="trailing" constant="20" id="eaW-o7-I2G"/>
                             <constraint firstItem="RM4-qC-LXk" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gei-b4-SK0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tME-Dp-iJO" secondAttribute="trailing" constant="20" id="gtR-p2-lRq"/>
                             <constraint firstItem="RPh-nJ-Khl" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="hqx-WI-6Q2"/>
-                            <constraint firstItem="tME-Dp-iJO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lH4-IC-MUh"/>
+                            <constraint firstItem="5go-F9-8Jq" firstAttribute="leading" secondItem="dDT-jw-wb9" secondAttribute="trailing" constant="20" id="iE9-Ml-Gmc"/>
                             <constraint firstItem="Jnn-AE-z7Q" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="qUn-P7-gxP"/>
                             <constraint firstItem="dDT-jw-wb9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yl4-p1-PuX"/>
                         </constraints>
@@ -122,7 +127,7 @@
                     <navigationItem key="navigationItem" id="TJS-gq-A9p"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="Jnn-AE-z7Q" id="rLu-3j-zLy"/>
-                        <outlet property="currencyLabel" destination="tME-Dp-iJO" id="daJ-se-haW"/>
+                        <outlet property="baseButton" destination="5go-F9-8Jq" id="OI9-3t-2b8"/>
                         <outlet property="daysSwitcher" destination="dDT-jw-wb9" id="l2j-Ih-Tif"/>
                         <outlet property="messageLabel" destination="RPh-nJ-Khl" id="jwT-Aq-DlZ"/>
                         <outlet property="tableView" destination="RM4-qC-LXk" id="WsH-py-McF"/>
@@ -130,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257.9710144927537" y="16.741071428571427"/>
+            <point key="canvasLocation" x="1256.25" y="15.845070422535212"/>
         </scene>
     </scenes>
     <resources>

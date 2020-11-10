@@ -55,7 +55,7 @@ import UIKit
         }
     }
     
-    @IBInspectable public var font: UIFont? = UIFont.systemFont(ofSize: 12.0) {
+    @IBInspectable public var font: UIFont? = UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.heavy) {
         didSet {
             setFont()
         }
