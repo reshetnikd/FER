@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     private let refreshControl: UIRefreshControl = UIRefreshControl()
     private let dataManager: DataManager = DataManager(baseURL: ExchangeRatesAPI.BaseURL)
     var rates: [String: Double] = [:]
-    var yesterday: Date = Date(timeInterval: 86400, since: Date())
+    var yesterday: Date = Date(timeInterval: -86400 * 2, since: Date())
     var now: Date = Date()
     var chosenDate: Date = Date()
     var baseCurrency: String = "EUR"
@@ -29,7 +29,18 @@ class ViewController: UIViewController {
     }
     
     @objc private func refreshCurrencyData(_ sender: Any) {
-        // Fetch Currency Data
+        // Fetch currency data
+        fetchCurrencyData()
+    }
+    
+    @objc private func changeDateAndRefreshCurrencyData(_ sender: Any) {
+        // Fetch currency data with new date
+        if daysSwitcher.selectedIndex == 1 {
+            chosenDate = now
+        } else {
+            chosenDate = yesterday
+        }
+        
         fetchCurrencyData()
     }
     
@@ -81,12 +92,13 @@ class ViewController: UIViewController {
     private func setupDaysSwitcher() {
         daysSwitcher.items = ["Yesterday", "Today"]
         daysSwitcher.selectedIndex = 1
+        daysSwitcher.addTarget(self, action: #selector(changeDateAndRefreshCurrencyData(_:)), for: UIControl.Event.valueChanged)
     }
     
     private func setupRefreshControl() {
         refreshControl.tintColor = UIColor.systemTeal
         refreshControl.attributedTitle = NSAttributedString(string: "Fetching Currency Rates ...")
-        refreshControl.addTarget(self, action: #selector(refreshCurrencyData(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshCurrencyData(_:)), for: UIControl.Event.valueChanged)
     }
     
     private func updateView() {
@@ -110,13 +122,18 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Dequeue Reusable Cell
+        // Dequeue reusable cell
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.ReuseIdentifier, for: indexPath) as! CurrencyTableViewCell
         
-        let ticker = Array(rates.keys)[indexPath.row]
-        let value = Array(rates.values)[indexPath.row]
+        // Configure data for cell
+        let sortedKeys = rates.keys.sorted { (lhs, rhs) -> Bool in
+            lhs.localizedStandardCompare(rhs) == ComparisonResult.orderedAscending
+        }
+        
+        let ticker = sortedKeys[indexPath.row]
+        let value = rates[sortedKeys[indexPath.row]]!
 
-        // Configure Cell
+        // Configure cell
         cell.tickerLabel.text = ticker
         cell.valueLabel.text = String(value)
 
