@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var daysSwitcher: CustomSegmentedControl!
     private let refreshControl: UIRefreshControl = UIRefreshControl()
     var currencyRate: CurrencyRate?
     var rates: [String: Double] = [:]
@@ -19,8 +20,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         currencyLabel.layer.cornerRadius = currencyLabel.frame.width / 2.0
         currencyLabel.clipsToBounds = true
+        daysSwitcher.items = ["Yesterday", "Today"]
+        daysSwitcher.selectedIndex = 1
         tableView.refreshControl = refreshControl
+        tableView.dataSource = self
+        tableView.rowHeight = 50.0
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        loadData()
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -39,16 +45,11 @@ class ViewController: UIViewController {
         
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             if let data = data {
-                let str = String(decoding: data, as: UTF8.self)
-                print(str)
                 if let decodedResponse = try? JSONDecoder().decode(CurrencyRate.self, from: data) {
                     DispatchQueue.main.async {
                         self.currencyRate = decodedResponse
                         self.rates = self.currencyRate!.rates
-                        print(self.rates.count)
-                        print(Array(self.rates.keys))
                         self.tableView.reloadData()
-                        print("YES!")
                     }
                     
                     return

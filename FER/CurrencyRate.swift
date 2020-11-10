@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct Rate: Codable {
-    var ticker: String
-    var value: Double
-}
-
 struct CurrencyRate: Codable {
     var rates: [String: Double]
     var base: String

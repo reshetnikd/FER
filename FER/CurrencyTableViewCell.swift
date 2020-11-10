@@ -10,8 +10,8 @@ import UIKit
 class CurrencyTableViewCell: UITableViewCell {
     static let ReuseIdentifier = "CurrencyTableViewCell"
     
-    var tickerLabel: UILabel!
-    var valueLabel: UILabel!
+    @IBOutlet weak var tickerLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
