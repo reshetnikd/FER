@@ -12,8 +12,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var daysSwitcher: CustomSegmentedControl!
     private let refreshControl: UIRefreshControl = UIRefreshControl()
+    private let dataManager: DataManager = DataManager(baseURL: ExchangeRatesAPI.BaseURL)
     var currencyRate: CurrencyRate?
     var rates: [String: Double] = [:]
+    var now = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,38 +27,39 @@ class ViewController: UIViewController {
         tableView.refreshControl = refreshControl
         tableView.dataSource = self
         tableView.rowHeight = 50.0
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        loadData()
+        refreshControl.addTarget(self, action: #selector(refreshCurrencyData(_:)), for: .valueChanged)
     }
     
-    @objc private func refreshData(_ sender: Any) {
-        // Fetch Data
-        print("Fetch data")
-        loadData()
+    @objc private func refreshCurrencyData(_ sender: Any) {
+        // Fetch Currency Data
+        fetchCurrencyData()
     }
     
-    func loadData() {
-        guard let url = URL(string: "https://api.exchangeratesapi.io/latest") else {
-            print("Invalid URL")
-            return
-        }
-        
-        let request = URLRequest(url: url)
-        
-        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
-            if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(CurrencyRate.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.currencyRate = decodedResponse
-                        self.rates = self.currencyRate!.rates
-                        self.tableView.reloadData()
-                    }
-                    
-                    return
+    private func fetchCurrencyData() {
+        dataManager.getCurrencyRatesFor(base: "EUR", date: now, completion: { (currencyRate, error) in
+            DispatchQueue.main.async {
+                if let currencyRate = currencyRate {
+                    self.currencyRate = currencyRate
+                    self.rates = self.currencyRate!.rates
                 }
+                
+                self.updateView()
+                self.refreshControl.endRefreshing()
             }
-            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
-        }).resume()
+        })
+    }
+    
+    private func setupView() {
+        tableView.isHidden = true
+    }
+    
+    private func updateView() {
+        let hasRates = rates.count > 0
+        tableView.isHidden = !hasRates
+        
+        if hasRates {
+            tableView.reloadData()
+        }
     }
 
 
@@ -71,10 +74,13 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Dequeue Reusable Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.ReuseIdentifier, for: indexPath) as! CurrencyTableViewCell
+        
+        let ticker = Array(rates.keys)[indexPath.row]
+        let value = Array(rates.values)[indexPath.row]
 
         // Configure Cell
-        cell.tickerLabel.text = Array(rates.keys)[indexPath.row]
-        cell.valueLabel.text = String(Array(rates.values)[indexPath.row])
+        cell.tickerLabel.text = ticker
+        cell.valueLabel.text = String(value)
 
         return cell
     }

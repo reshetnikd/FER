@@ -16,6 +16,7 @@
 		356992562559C78500C10185 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356992552559C78500C10185 /* CustomSegmentedControl.swift */; };
 		3569925B2559DF8400C10185 /* CurrencyRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3569925A2559DF8400C10185 /* CurrencyRate.swift */; };
 		3569925E2559E26100C10185 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3569925D2559E26100C10185 /* CurrencyTableViewCell.swift */; };
+		35699262255A7CE200C10185 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35699261255A7CE200C10185 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		356992552559C78500C10185 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		3569925A2559DF8400C10185 /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
 		3569925D2559E26100C10185 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		35699261255A7CE200C10185 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +67,12 @@
 				3569923B2559A3FD00C10185 /* AppDelegate.swift */,
 				3569923D2559A3FD00C10185 /* SceneDelegate.swift */,
 				3569923F2559A3FD00C10185 /* ViewController.swift */,
+				35699261255A7CE200C10185 /* DataManager.swift */,
 				3569925D2559E26100C10185 /* CurrencyTableViewCell.swift */,
 				3569925A2559DF8400C10185 /* CurrencyRate.swift */,
-				356992412559A3FD00C10185 /* Main.storyboard */,
 				356992552559C78500C10185 /* CustomSegmentedControl.swift */,
 				356992442559A3FE00C10185 /* Assets.xcassets */,
+				356992412559A3FD00C10185 /* Main.storyboard */,
 				356992462559A3FE00C10185 /* LaunchScreen.storyboard */,
 				356992492559A3FE00C10185 /* Info.plist */,
 			);
@@ -149,6 +152,7 @@
 				356992402559A3FD00C10185 /* ViewController.swift in Sources */,
 				3569923C2559A3FD00C10185 /* AppDelegate.swift in Sources */,
 				356992562559C78500C10185 /* CustomSegmentedControl.swift in Sources */,
+				35699262255A7CE200C10185 /* DataManager.swift in Sources */,
 				3569923E2559A3FD00C10185 /* SceneDelegate.swift in Sources */,
 				3569925E2559E26100C10185 /* CurrencyTableViewCell.swift in Sources */,
 				3569925B2559DF8400C10185 /* CurrencyRate.swift in Sources */,
