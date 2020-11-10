@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     private let refreshControl: UIRefreshControl = UIRefreshControl()
     private let dataManager: DataManager = DataManager(baseURL: ExchangeRatesAPI.BaseURL)
     var rates: [String: Double] = [:]
-    var yesterday: Date = Date(timeInterval: -86400 * 4, since: Date()) // If API return same result for yesterday date, use bigger time interval
+    var yesterday: Date = Date(timeInterval: -86400, since: Date()) // If API return same result for yesterday date, use bigger time interval
     var now: Date = Date()
     var chosenDate: Date = Date()
     var baseCurrencys: [String] = ["EUR", "USD", "GBP"]
